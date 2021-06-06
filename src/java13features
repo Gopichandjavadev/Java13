@@ -1,0 +1,35 @@
+1. Reimplement the Legacy Socket API – JEP 353
+ The underlying implementation of the java.net.Socket and java.net.ServerSocket APIs have been rewritten. The new implementation, NioSocketImpl, is a drop-in replacement for PlainSocketImpl.
+
+ It uses java.util.concurrent locks rather than synchronized methods. If you want to use the legacy implementation, use the java option -Djdk.net.usePlainSocketImpl.
+
+2. Dynamic CDS Archive – JEP 350
+ This JEP extends the class-data sharing feature, which was introduced in Java 10. Now, the creation of CDS archive and using it is much easier.
+
+ $ java -XX:ArchiveClassesAtExit=my_app_cds.jsa -cp my_app.jar
+
+ $ java -XX:SharedArchiveFile=my_app_cds.jsa -cp my_app.jar
+ 
+3. ZGC: Uncommit Unused Memory – JEP 351
+ This JEP has enhanced ZGC to return unused heap memory to the operating system. The Z Garbage Collector was introduced in Java 11. It adds a short pause time before the heap memory cleanup. But, the unused memory was not being returned to the operating system. This was a concern for devices with small memory footprint such as IoT and microchips. Now, it has been enhanced to return the unused memory to the operating system.
+
+4. FileSystems.newFileSystem() Method
+ Three new methods have been added to the FileSystems class to make it easier to use file system providers, which treats the contents of a file as a file system.
+
+ newFileSystem(Path)
+ newFileSystem(Path, Map<String, ?>)
+ newFileSystem(Path, Map<String, ?>, ClassLoader)
+ 
+5. DOM and SAX Factories with Namespace Support
+ There are new methods to instantiate DOM and SAX factories with Namespace support.
+
+ newDefaultNSInstance()
+ newNSInstance()
+ newNSInstance(String factoryClassName, ClassLoader classLoader)
+ //java 13 onwards
+ DocumentBuilder db = DocumentBuilderFactory.newDefaultNSInstance().newDocumentBuilder(); 
+
+ // before java 13
+ DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance(); 
+ dbf.setNamespaceAware(true); 
+ DocumentBuilder db = dbf.newDocumentBuilder();
