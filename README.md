@@ -1,7 +1,7 @@
 # Java13
 
 1. Preview Developer Features
-  Java 13 has brought in two new language features, albeit in the preview mode. This implies that these features are fully implemented for developers to evaluate, yet are not production-ready. Also, they can either be removed or made permanent in future releases based on feedback.
+  Java 13 has brought in two new language features, albeit in the preview mode. This implies that these features are fully implemented for developers to evaluate,    yet are not production-ready. Also, they can either be removed or made permanent in future releases based on feedback.
 
   We need to specify –enable-preview as a command-line flag to use the preview features. Let's look at them in-depth.
 
